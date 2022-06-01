@@ -1,5 +1,14 @@
 package fr.eni.tp.filmotheque.bo;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Genre {
 	
 	private Integer id;
@@ -11,30 +20,8 @@ public class Genre {
 		this.libelle = libelle;
 	}
 
-	public Genre() {
-		super();
-	}
-
 	@Override
 	public String toString() {
 		return "Genre [libelle=" + libelle + "]";
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	
-	
+	}	
 }

@@ -10,29 +10,73 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h1>Filmothèque</h1>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Filmothèque</a>
+			</div>
+		</div>
+	</nav>
 	<br>
 	<h2>Detail du film :</h2>
 	<br>
-	Genre :
-	<span th:text="${film.genre.libelle}"></span>
-	<br> Année :
-	<span th:text="${film.annee}"></span>
-	<br> Titre :
-	<span th:text="${film.titre}"></span>
-	<br> Réalisateur :
-	<span th:text="${film.realisateur.nom}"></span>
-	<span th:text="${film.realisateur.prenom}"></span>
-	<br> Durée :
-	<span th:text="${film.duree}"></span>
-	<br> Acteur(s) :
+	<form>
+		<div class="form-group row">
+			<label for="inputTitre" class="col-sm-2 col-form-label">Titre
+				:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputTitre"
+					disabled="disabled" th:value="${film.titre}" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputGenre" class="col-sm-2 col-form-label">Genre
+				:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputGenre"
+					disabled="disabled" th:value="${film.genre.libelle}" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputAnnee" class="col-sm-2 col-form-label">Année
+				:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputAnnee"
+					disabled="disabled" th:value="${film.annee}" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputRealisateur" class="col-sm-2 col-form-label">Réalisateur
+				:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputRealisateur"
+					disabled="disabled"
+					th:value="${film.realisateur.nom} + ' ' + ${film.realisateur.prenom}" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputDuree" class="col-sm-2 col-form-label">Durée
+				:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputDuree"
+					disabled="disabled" th:value="${film.duree}" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputSynopsis" class="col-sm-2 col-form-label">Synopsis
+				:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="inputSynopsis"
+					disabled="disabled" th:value="${film.synopsis}" />
+			</div>
+		</div>
+	</form>
+	Acteur(s) :
 	<table>
 		<tr data-th-each="movie: ${film.listeActeurs}">
 			<td th:text="${movie.prenom}" />
 			<td th:text="${movie.nom}" />
 		</tr>
 	</table>
-	<br> Synopsis :
-	<span th:text="${film.synopsis}"></span>
 </body>
 </html>

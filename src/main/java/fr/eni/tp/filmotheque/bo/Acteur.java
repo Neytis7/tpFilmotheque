@@ -1,5 +1,14 @@
 package fr.eni.tp.filmotheque.bo;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Acteur {
 	
 	private Integer id;
@@ -8,39 +17,8 @@ public class Acteur {
 	
 	private String prenom;
 
-	public Acteur() {
-		super();
-	}
-
 	@Override
 	public String toString() {
 		return "Acteur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
 	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-	
-	
-
 }

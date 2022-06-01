@@ -14,7 +14,7 @@ public class FilmServiceImpl implements FilmService {
 
 	@Override
 	public ArrayList<Film> creerListeFilms() {
-		
+
 		ArrayList<Film> listeFilms = new ArrayList<>();
 
 		Film filmN1 = new Film();
@@ -50,9 +50,7 @@ public class FilmServiceImpl implements FilmService {
 		filmN1.setListeActeurs(listeActeurs);
 
 		listeFilms.add(filmN1);
-		
-		
-		
+
 		Film filmN2 = new Film();
 
 		filmN2.setId(2);
@@ -73,12 +71,12 @@ public class FilmServiceImpl implements FilmService {
 		ArrayList<Acteur> listeActeurs2 = new ArrayList<>();
 
 		Acteur acteur3 = new Acteur();
-		acteur1.setNom("Lise");
-		acteur1.setPrenom("Lee");
+		acteur3.setNom("Lise");
+		acteur3.setPrenom("Lee");
 
 		Acteur acteur4 = new Acteur();
-		acteur2.setNom("Mickel");
-		acteur2.setPrenom("Bryan");
+		acteur4.setNom("Mickel");
+		acteur4.setPrenom("Bryan");
 
 		listeActeurs2.add(acteur3);
 		listeActeurs2.add(acteur4);
@@ -86,7 +84,8 @@ public class FilmServiceImpl implements FilmService {
 		filmN2.setListeActeurs(listeActeurs2);
 
 		listeFilms.add(filmN2);
-		
+
+		System.out.println(listeFilms.get(1).toString());
 		return listeFilms;
 	}
 
