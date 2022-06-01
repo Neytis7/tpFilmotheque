@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TP ENI</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+</head>
+<body>
+	<h1>Filmothèque</h1>
+	<br>
+	<h2>Detail du film :</h2>
+	<br>
+	Genre :
+	<span th:text="${film.genre.libelle}"></span>
+	<br> Année :
+	<span th:text="${film.annee}"></span>
+	<br> Titre :
+	<span th:text="${film.titre}"></span>
+	<br> Réalisateur :
+	<span th:text="${film.realisateur.nom}"></span>
+	<span th:text="${film.realisateur.prenom}"></span>
+	<br> Durée :
+	<span th:text="${film.duree}"></span>
+	<br> Acteur(s) :
+	<table>
+		<tr data-th-each="movie: ${film.listeActeurs}">
+			<td th:text="${movie.prenom}" />
+			<td th:text="${movie.nom}" />
+		</tr>
+	</table>
+	<br> Synopsis :
+	<span th:text="${film.synopsis}"></span>
+</body>
+</html>
