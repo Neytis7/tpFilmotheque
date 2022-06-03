@@ -12,10 +12,12 @@ import fr.eni.tp.filmotheque.bo.Realisateur;
 @Service("filmService")
 public class FilmServiceImpl implements FilmService {
 
+	private ArrayList<Film>listeFilms;
+	
 	@Override
 	public ArrayList<Film> creerListeFilms() {
 
-		ArrayList<Film> listeFilms = new ArrayList<>();
+		listeFilms = new ArrayList<>();
 
 		Film filmN1 = new Film();
 
@@ -88,5 +90,4 @@ public class FilmServiceImpl implements FilmService {
 		System.out.println(listeFilms.get(1).toString());
 		return listeFilms;
 	}
-
 }

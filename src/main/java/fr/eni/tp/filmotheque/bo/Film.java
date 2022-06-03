@@ -2,6 +2,9 @@ package fr.eni.tp.filmotheque.bo;
 
 import java.util.ArrayList;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +18,13 @@ public class Film {
 	
 	private Integer id;
 	
+	@NotBlank(message = "Le titre est obligatoire")
 	private String titre;
 	
+	@NotBlank(message = "L'année est obligatoire")
 	private Integer annee;
 	
+	@Min(1)
 	private Integer duree;
 	
 	private String synopsis;

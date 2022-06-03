@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TP ENI</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Filmothèque</a>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<h2>Ajout un film :</h2>
+	<br>
+	<form th:action="@{/movies/ajouter/add}" th:object=${film}
+		method="post">
+
+		<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+			<p th:text="#{ajouterFilm.erreurs}">Message d'erreur</p>
+		</div>
+
+		<div class="form-group row">
+			<label for="inputTitre" class="col-sm-2 col-form-label">Titre
+				:</label>
+			<div class="col-sm-5">
+				<input type="text" th:field="*{titre}" class="form-control"
+					id="inputTitre" required /> <span class="text-danger col-6"
+					th:if="${#fields.hasErrors('titre')}">
+					<ul>
+						<li th:each="erreur: ${#fields.errors('titre')}"
+							th:text="${erreur}"></li>
+					</ul>
+				</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputGenre" class="col-sm-2 col-form-label">Genre
+				:</label> <Select class="form-select col-2" th:field="*{genre}" required>
+				<option th:each="genre: ${@getGenres}" th:value="${genre.id}"
+					th:text="${genre.libelle}"></option>
+			</Select>
+		</div>
+		<div class="form-group row">
+			<label for="inputAnnee" class="col-sm-2 col-form-label">Année
+				:</label>
+			<div class="col-sm-5">
+				<input type="text" th:field="*{annee}" class="form-control"
+					id="inputAnnee" required />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputRealisateur" class="col-sm-2 col-form-label">Réalisateur
+				:</label> <Select class="form-select col-2" th:field="*{realisateur}"
+				required>
+				<option th:each="realisateur: ${@getRealisateurs}"
+					th:value="${realisateur.id}"
+					th:text="${realisateur.nom}+' '+${realisateur.prenom}"></option>
+			</Select>
+		</div>
+		<div class="form-group row">
+			<label for="inputDuree" class="col-sm-2 col-form-label">Durée
+				:</label>
+			<div class="col-sm-5">
+				<input type="text" th:field="*{duree}" class="form-control"
+					id="inputDuree" />
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputSynopsis" class="col-sm-2 col-form-label">Synopsis
+				:</label>
+			<div class="col-sm-5">
+				<input type="text" th:field="*{synopsis}" class="form-control"
+					id="inputSynopsis" />
+			</div>
+		</div>
+		<button type="submit" class="btn btn-default col-4 offset-4">Ajouter
+			le film</button>
+	</form>
+</body>
+</html>

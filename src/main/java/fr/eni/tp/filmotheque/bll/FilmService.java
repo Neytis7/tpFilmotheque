@@ -7,5 +7,9 @@ import fr.eni.tp.filmotheque.bo.Film;
 public interface FilmService {
 	
 	public abstract ArrayList<Film> creerListeFilms();
+	
+//	public abstract ArrayList<Film> getAllFilm();
+//	
+//	public abstract void addFilm(ArrayList<Film> listeFilms);
 
 }
