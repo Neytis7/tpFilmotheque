@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta charset="UTF-8">
 <title>TP ENI</title>
@@ -10,16 +10,40 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Filmothèque</a>
-			</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/">Filmothèque</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<div sec:authorize="hasRole('ADMIN')">
+					<li class="nav-item active"><a class="nav-link"
+						href="movies/ajouter">Ajouter film</a></li>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<li class="nav-item active">
+						<form method="POST" th:action="@{/logout}">
+							<input type="submit" class="btn btn-link" value="Deconnexion" />
+						</form>
+					</li>
+				</div>
+				<div sec:authorize="isAnonymous()">
+					<li class="nav-item active">
+						<form method="POST" th:action="@{/login}">
+							<input type="submit" class="btn btn-link" value="Connexion" />
+						</form>
+					</li>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+					<li class="nav-item active"><span sec:authentication="name"></li>
+				</div>
+			</ul>
 		</div>
 	</nav>
 	<br>
-	<div th:if="${param.error}">Invalid username and password.</div>
-	<div th:if="${param.logout}">You have been logged out.</div>
 	<form th:action="@{/login}" method="post">
 		<div>
 			<label> User Name : <input type="text" name="username" />

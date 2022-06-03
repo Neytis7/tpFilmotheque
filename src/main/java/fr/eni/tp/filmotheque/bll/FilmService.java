@@ -14,6 +14,5 @@ public interface FilmService {
 	
 	public abstract void addCompteur();
 	
-	public abstract void addFilm(Film film);
 
 }

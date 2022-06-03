@@ -108,10 +108,4 @@ public class FilmServiceImpl implements FilmService {
 	public void addCompteur() {
 		this.compteur = this.compteur+1;
 	}
-
-	@Override
-	public void addFilm(Film film) {
-		this.listeFilms.add(film);
-		
-	}
 }

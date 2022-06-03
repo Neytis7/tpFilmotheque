@@ -44,30 +44,13 @@
 			</ul>
 		</div>
 	</nav>
-	<h2 style="text-align: center">Les films de l'ENI</h2>
-	<div class="py-5">
-		<div class="container">
-			<div class="row hidden-md-up">
-				<tr data-th-each="movie: ${listeFilm}">
-					<div class="col-md-4">
-						<div class="card">
-							<div class="card-block">
-								<h4 class="card-title" style="text-align: center">
-									<p th:text="${movie.titre} +' (' +${movie.annee} +')'"></p>
-								</h4>
-								<h6 class="card-subtitle text-muted">
-									<p
-										th:text="'Realisateur : '+${movie.realisateur.nom} +' ' + ${movie.realisateur.prenom}"></p>
-								</h6>
-								<p class="card-subtitle text-muted"
-									th:text="'Genre : ' + ${movie.genre.libelle}"></p>
-								<a th:href="@{/movies/detail(id=${movie.id})}">Detail</a>
-							</div>
-						</div>
-					</div>
-				</tr>
-			</div>
+	<br>
+	<h2>Ajouter un avis :</h2>
+	<form th:action="@{/movies/avis/add(id=${film.id})}" th:object=${avis} method="post">
+		<div class="form-group">
+			<textarea class="form-control" th:field="*{texte}" id="exampleFormControlTextarea1"rows="3"></textarea>
 		</div>
-	</div>
+		<button type="submit" class="btn btn-success col-4 offset-4">Enregistrer</button>
+	</form>
 </body>
 </html>

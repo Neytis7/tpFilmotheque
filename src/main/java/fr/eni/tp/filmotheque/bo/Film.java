@@ -34,11 +34,13 @@ public class Film {
 	private Participant realisateur;
 	
 	private ArrayList<Participant> listeActeurs;
-
+	
+	private ArrayList<Avis> listeAvis;
 
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", titre=" + titre + ", annee=" + annee + ", duree=" + duree + ", synopsis="
-				+ synopsis + ", genre=" + genre + ", realisateur=" + realisateur + ", listeActeur=" + listeActeurs + "]";
+				+ synopsis + ", genre=" + genre + ", realisateur=" + realisateur + ", listeActeurs=" + listeActeurs
+				+ ", listeAvis=" + listeAvis + "]";
 	}
 }
