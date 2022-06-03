@@ -9,8 +9,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Acteur {
-	
+public class Participant {
+
 	private Integer id;
 	
 	private String nom;
@@ -19,6 +19,6 @@ public class Acteur {
 
 	@Override
 	public String toString() {
-		return "Acteur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
-	}
+		return "Realisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
+	}	
 }

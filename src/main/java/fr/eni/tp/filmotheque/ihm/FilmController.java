@@ -1,6 +1,5 @@
 package fr.eni.tp.filmotheque.ihm;
 
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,47 +16,44 @@ import fr.eni.tp.filmotheque.bo.Film;
 public class FilmController {
 
 	private FilmService filmService;
-	private ArrayList<Film> listeFilm;
-	private Integer compteur;
 
 	@Autowired
 	public FilmController(FilmService filmService) {
 		super();
 		this.filmService = filmService;
-		listeFilm = filmService.creerListeFilms();
-		this.compteur = 5;
+		filmService.creerListeFilms();
 	}
 
-	@RequestMapping("movies/detail")
+	@RequestMapping("/movies/detail")
 	public String afficherDetail(@RequestParam int id, Model modele) {
 		int cp = 0;
-		while(listeFilm.get(cp).getId()!=id) {
+		while(filmService.getAllFilm().get(cp).getId()!=id) {
 			cp++;
 		}
-		Film film = listeFilm.get(cp);
+		Film film = filmService.getAllFilm().get(cp);
 		modele.addAttribute("film", film);
 		return "detailFilm";
 	}
 
-	@RequestMapping({"","/movies"})
+	@RequestMapping(" ")
 	public String afficherListeFilm(Model modele) {
-		modele.addAttribute("listeFilm", listeFilm);
+		modele.addAttribute("listeFilm", filmService.getAllFilm());
 		return "listeFilm";
 	}
 	
-	@RequestMapping("movies/ajouter/add")
+	@RequestMapping("/movies/ajouter/add")
 	public String ajouterFilm(@ModelAttribute("film") Film film,Model modele,BindingResult validationResult) {
 		if(validationResult.hasErrors()) {
 			return "ajouterFilm";
 		}
-		film.setId(this.compteur);
-		this.compteur = this.compteur+1;
-		listeFilm.add(film);
-		modele.addAttribute("listeFilm",listeFilm);
+		film.setId(filmService.getCompteur());
+		filmService.addCompteur();
+		filmService.addFilm(film);
+		modele.addAttribute("listeFilm",filmService.getAllFilm());
 		return "redirect:/";
 	}
 	
-	@RequestMapping("movies/ajouter")
+	@RequestMapping("/movies/ajouter")
 	public String afficherAjouterFilm(Model modele){
 		modele.addAttribute("film",new Film());
 		return "ajouterFilm";

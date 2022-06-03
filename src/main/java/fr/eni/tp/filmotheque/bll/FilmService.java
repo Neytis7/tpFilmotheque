@@ -8,8 +8,12 @@ public interface FilmService {
 	
 	public abstract ArrayList<Film> creerListeFilms();
 	
-//	public abstract ArrayList<Film> getAllFilm();
-//	
-//	public abstract void addFilm(ArrayList<Film> listeFilms);
+	public abstract ArrayList<Film> getAllFilm();
+	
+	public abstract int getCompteur();
+	
+	public abstract void addCompteur();
+	
+	public abstract void addFilm(Film film);
 
 }

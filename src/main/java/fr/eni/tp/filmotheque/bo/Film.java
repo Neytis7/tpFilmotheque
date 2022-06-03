@@ -31,9 +31,9 @@ public class Film {
 	
 	private Genre genre;
 	
-	private Realisateur realisateur;
+	private Participant realisateur;
 	
-	private ArrayList<Acteur> listeActeurs;
+	private ArrayList<Participant> listeActeurs;
 
 
 	@Override

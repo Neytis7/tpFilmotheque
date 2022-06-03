@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.ApplicationScope;
 
 import fr.eni.tp.filmotheque.bll.GenreService;
-import fr.eni.tp.filmotheque.bll.RealisateurService;
+import fr.eni.tp.filmotheque.bll.ParticipantService;
 import fr.eni.tp.filmotheque.bo.Genre;
-import fr.eni.tp.filmotheque.bo.Realisateur;
+import fr.eni.tp.filmotheque.bo.Participant;
 
 @Configuration
 public class FilmothequeConfig {
@@ -22,7 +22,7 @@ public class FilmothequeConfig {
 	
 	@Bean
 	@ApplicationScope
-	public List<Realisateur> getRealisateurs(RealisateurService genreService){
-		return genreService.creerListeRealisateur();
+	public List<Participant> getParticipants(ParticipantService participantService){
+		return participantService.creerListeParticipant();
 	}
 }
